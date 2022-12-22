@@ -1,0 +1,30 @@
+@import "../App.css";
+
+.container {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1017px;
+    height: 741px;
+    left: 211px;
+    top: 141px;
+
+    background: #FFFFFF;
+
+    /* gray.100 */
+    border: 2px solid #F0F2F6;
+    box-shadow: 0px 4px 31px #EEF1F5;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 54px;
+    margin-top: 56px;
+    margin-left: 60px;
+}

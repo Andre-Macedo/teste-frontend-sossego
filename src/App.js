@@ -1,10 +1,20 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Layout from "./pages/Layout"
+import UserForm from "./pages/UserForm";
+import AddressForm from './pages/AdressForm';
+import AboutForm from './pages/AdressForm';
 import './App.css';
 
 function App() {
   return (
-    <div className="container">
-    </div>
+    // <Routes>
+    //   <Route path='/' element={<Layout />}>
+    //     <Route index element={<UserForm />} />
+    //     <Route path="/address-user" element={<AddressForm />} />
+    //     <Route path="/about-user" element={<AboutForm />} />
+    //   </Route>
+    // </Routes>
+    <Layout />
   );
 }
 
