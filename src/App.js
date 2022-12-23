@@ -3,7 +3,7 @@ import Layout from "./pages/Layout"
 import UserForm from "./pages/UserForm";
 import AddressForm from './pages/AdressForm';
 import AboutForm from './pages/AdressForm';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

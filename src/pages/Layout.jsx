@@ -1,7 +1,9 @@
 import React from "react";
 import NavBar from "../components/NavBar"
 import { Outlet } from "react-router-dom";
-import "../styles/layout.css"
+import "../styles/layout.scss"
+import UserForm from "./UserForm";
+import AddressForm from "./AdressForm";
 
 function Layout() {
 
@@ -9,7 +11,7 @@ function Layout() {
         <div className="container">
             <h1>Criação de Usuário</h1>
             <NavBar />
-            <Outlet />
+            <AddressForm />
         </div>
     )
 }

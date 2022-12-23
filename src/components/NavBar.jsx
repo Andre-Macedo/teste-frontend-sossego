@@ -2,7 +2,7 @@ import React from "react";
 import IdIcon from "../assets/userIdIcon.svg"
 import AddressIcon from "../assets/userAddressIcon.svg";
 import AboutIcon from "../assets/userAboutIcon.svg";
-import "../styles/navbar.css";
+import "../styles/navbar.scss";
 
 function NavBar() {
 

@@ -1,0 +1,81 @@
+@import "../App.scss";
+
+.container {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1017px;
+    height: 741px;
+    left: 211px;
+    top: 141px;
+
+    background: #FFFFFF;
+
+    /* gray.100 */
+    border: 2px solid #F0F2F6;
+    box-shadow: 0px 4px 31px #EEF1F5;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 54px;
+    margin-top: 56px;
+    margin-left: 60px;
+    margin-bottom: 46px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+
+    margin-right: 23px;
+    margin-top: 46px;
+    margin-left: 60px;
+}
+
+
+input {
+    background-color: #F0F2F6;
+    border-radius: 4px;
+    height: 44px;
+    border: 0;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    line-height: 44px;
+    margin-right: 60px;
+    margin-bottom: 26px;
+}
+
+
+.buttons {
+    margin-left: auto;
+    margin-right: 7px;
+    margin-top: 60px;
+}
+
+input[type="button"] {
+    width: 226px;
+    height: 54px;
+    background-color: #5357B1;
+    border-radius: 4px;
+    cursor: pointer;
+
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 24px;
+
+}
