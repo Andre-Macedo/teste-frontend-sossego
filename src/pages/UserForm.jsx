@@ -1,41 +1,19 @@
 import React from "react";
 import "../styles/userform.scss"
 
+import { Input } from "../components/Input";
+
 function UserForm() {
 
     return (
         <form>
-
-            <label> Nome
-                <input
-                    type="text"
-                    name="nome"
-                />
-            </label>
+            <Input label="Nome" inputType="text" inputName="Nome" />
             <div className="bottomdiv">
-                <label>
-                    Senha
-                    <input
-                        type="password"
-                        name="senha"
-                    />
-                </label>
-                <label>
-                    Confirmar Senha
-                    <input
-                        type="password"
-                        name="confirmar senha"
-                    />
-                </label>
+                <Input label="Senha" inputType="password" inputName="Senha" />
+                <Input label="Confirmar senha" inputType="password" inputName="Confirmar senha" />
             </div>
             <div className="bottomdiv">
-                <label>
-                    Email
-                    <input
-                        type="email"
-                        name="email"
-                    />
-                </label>
+                <Input label="Email" inputType="email" inputName="Email" />
                 <label>
                     Data de Nascimento
                     <input
@@ -47,7 +25,7 @@ function UserForm() {
                 </label>
             </div>
             <div className="buttons">
-                <input type="button" value="Próximo Passo" />
+                <Input inputType="button" value="Próximo Passo" />
             </div>
         </form>
     )
