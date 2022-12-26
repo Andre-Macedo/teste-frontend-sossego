@@ -7,27 +7,31 @@ export const Input = props => {
         inputType,
         inputName,
         inputPlaceholder,
+        onClick,
         className,
-        isRequired,
-        value,
-        setValue,
+        required,
+        onChange,
+        value
     } = props;
 
     return (
 
-        <label>
+        <label htmlFor={inputId}>
             {label}
             <input
                 className={className}
+
                 id={inputId}
-                type={inputType}
                 name={inputName}
+                type={inputType}
+
                 placeholder={inputPlaceholder}
 
-                required={isRequired}
+                required={required}
 
                 value={value}
-                onChange={event => setValue(event.target.value)}
+                onChange={onChange}
+                onClick={onClick}
             />
         </label>
 

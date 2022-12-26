@@ -12,7 +12,7 @@ function Layout() {
         <div className="container">
             <h1>Criação de Usuário</h1>
             <NavBar />
-            <AboutForm />
+            <UserForm />
         </div>
     )
 }
