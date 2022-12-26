@@ -9,6 +9,7 @@
     left: 211px;
     top: 141px;
 
+
     background: #FFFFFF;
 
     /* gray.100 */
@@ -62,9 +63,21 @@ label {
 
 
 .buttons {
+    display: flex;
+    flex-direction: row;
     margin-left: auto;
     margin-right: 7px;
     margin-top: 60px;
+
+    label {
+        margin-right: 0px;
+    }
+
+    .button_voltar {
+        margin-right: 24px;
+        background-color: #8C98A9;
+    }
+
 }
 
 input[type="button"] {
@@ -78,4 +91,12 @@ input[type="button"] {
     color: #FFFFFF;
     line-height: 24px;
 
+}
+
+textarea {
+    background-color: #F0F2F6;
+    border-radius: 4px;
+    border: 0;
+    resize: none;
+    height: 232px;
 }

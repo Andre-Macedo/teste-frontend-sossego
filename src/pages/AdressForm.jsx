@@ -1,52 +1,26 @@
 import React from "react";
+import { Input } from "../components/Input";
+import "../styles/adressform.scss"
 
 function AddressForm() {
 
     return (
         <form>
-
-            <label> CEP
-                <input
-                    type="text"
-                    name="name"
-                />
-            </label>
             <div className="bottomdiv">
-                <label>
-                    Senha
-                    <input
-                        type="password"
-                        name="senha"
-                    />
-                </label>
-                <label>
-                    Confirmar Senha
-                    <input
-                        type="password"
-                        name="confirmar senha"
-                    />
-                </label>
+                <Input label="CEP" inputType="text" inputName="CEP" />
+                <Input label="Rua" inputType="text" inputName="Rua" />
             </div>
             <div className="bottomdiv">
-                <label>
-                    Email
-                    <input
-                        type="email"
-                        name="email"
-                    />
-                </label>
-                <label>
-                    Data de Nascimento
-                    <input
-                        type="text"
-                        onChange={(e) => console.log(e.target.value)}
-                        onFocus={(e) => (e.target.type = "date")}
-                        onBlur={(e) => (e.target.type = "text")}
-                    />
-                </label>
+                <div className="bottomdiv2">
+                    <Input label="Número" inputType="text" inputName="Numero" />
+                    <Input label="Bairro" inputType="text" inputName="Bairro" />
+                </div>
+                <Input label="Cidade" inputType="text" inputName="Cidade" />
             </div>
+            <Input label="Ponto de Referência" inputType="text" inputName="Ponto de referencia" />
             <div className="buttons">
-                <input type="button" value="Próximo Passo" />
+                <Input className="button_voltar" inputType="button" value="Voltar" />
+                <Input inputType="button" value="Próximo Passo" />
             </div>
         </form>
     )

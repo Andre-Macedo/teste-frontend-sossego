@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import "../styles/layout.scss"
 import UserForm from "./UserForm";
 import AddressForm from "./AdressForm";
+import AboutForm from "./AboutForm";
 
 function Layout() {
 
@@ -11,7 +12,7 @@ function Layout() {
         <div className="container">
             <h1>Criação de Usuário</h1>
             <NavBar />
-            <UserForm />
+            <AboutForm />
         </div>
     )
 }
