@@ -3,17 +3,21 @@ import { Input } from "../components/Input";
 
 import "../styles/aboutform.scss"
 
-function AboutForm() {
+import { useState } from "react";
+
+function AboutForm({ onSubmit, setEndereco }) {
+
+    const [about, setAbout] = useState("");
 
     return (
-        <form>
-            <label id="aboutTextBox">
-                Nos conte mais sobre você
-                <textarea type="text" width="874px" rows="13" />
-            </label>
+        <form name="about" onSubmit={onSubmit}>
+            <label htmlFor="aboutTextBox">Nos conte mais sobre você</label>
+            <textarea id="aboutTextBox" name="aboutTextBox" width="874px" rows="13"
+                value={about}
+                onChange={(event) => setAbout(event.target.value)} required />
             <div className="buttons">
-                <Input className="button_voltar" inputType="button" value="Voltar" />
-                <Input inputType="button" value="Próximo Passo" />
+                <button className="button_voltar" type="button" onClick={() => setAbout({})}>Voltar</button>
+                <button type="submit">Próximo Passo</button>
             </div>
         </form>
     )

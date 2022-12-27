@@ -3,7 +3,7 @@ import "../styles/userform.scss"
 
 import { Input } from "../components/Input";
 
-function UserForm() {
+function UserForm({ onSubmit }) {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -27,6 +27,13 @@ function UserForm() {
             alert('A senha e a confirmação de senha não são iguais. Por favor, verifique se você digitou corretamente a senha e a confirmação de senha.');
             return false;
         }
+
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        if (!passwordRegex.test(senha)) {
+            alert('A senha deve ter no mínimo 8 caracteres, uma maiúscula, um número e um caractere especial.');
+            return false;
+        }
+
         return true;
     }
 
@@ -51,50 +58,32 @@ function UserForm() {
 
 
     return (
-        <form>
-            <Input
-                label="Nome"
-                inputId="nome"
-                inputName="nome"
-                inputType="text"
-                value={nome}
-                onChange={(event) => setNome(event.target.value)}
-                required
-            />
+        <form name="identificacao" onSubmit={onSubmit}>
+            <label htmlFor="nome">
+                Nome:
+                <input type="text" id="nome" value={nome} onChange={(event) => setNome(event.target.value)} required />
+            </label>
             <div className="bottomdiv">
-                <Input
-                    label="Senha"
-                    inputId="senha"
-                    inputName="senha"
-                    inputType="password"
-                    value={senha}
-                    onChange={(event) => setSenha(event.target.value)}
-                    required
-                />
-                <Input
-                    label="Confirmação de Senha"
-                    inputId="confirmacaoSenha"
-                    inputName="confirmacaoSenha"
-                    inputType="password"
-                    value={confirmacaoSenha}
-                    onChange={(event) => setConfirmacaoSenha(event.target.value)}
-                    required
-                />
+                <label htmlFor="senha">
+                    Senha:
+                    <input type="password" id="senha" value={senha} onChange={(event) => setSenha(event.target.value)} required />
+                </label>
+                <label htmlFor="confirmacaoSenha">
+                    Confirmação de Senha:
+                    <input type="password" id="confirmacaoSenha" value={confirmacaoSenha} onChange={(event) => setConfirmacaoSenha(event.target.value)} required />
+                </label>
             </div>
             <div className="bottomdiv">
-                <Input
-                    label="Email"
-                    inputId="email"
-                    inputName="email"
-                    inputType="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    required
-                />
-                <label>
+                <label htmlFor="email">
+                    Email:
+                    <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+                </label>
+                <label htmlFor="dataNascimento">
                     Data de Nascimento
                     <input
                         type="text"
+                        id="dataNascimento"
+                        value={dataNascimento}
                         onChange={(event) => setDataNascimento(event.target.value)}
                         onFocus={(e) => (e.target.type = "date")}
                         onBlur={(e) => (e.target.type = "text")}
@@ -103,7 +92,7 @@ function UserForm() {
                 </label>
             </div>
             <div className="buttons">
-                <Input inputType="submit" value="Próximo Passo" onClick={handleSubmit} />
+                <button type="submit">Próximo Passo</button>
             </div>
         </form>
     )

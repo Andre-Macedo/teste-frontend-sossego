@@ -2,25 +2,80 @@ import React from "react";
 import { Input } from "../components/Input";
 import "../styles/adressform.scss"
 
-function AddressForm() {
+import { useState } from "react";
+
+function AddressForm({ onSubmit, setEndereco }) {
+
+    const [cep, setCep] = useState('');
+    const [rua, setRua] = useState('');
+    const [numero, setNumero] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [pontoReferencia, setPontoReferencia] = useState('');
+
+    function validateFields() {
+        if (!cep || !rua || !numero || !bairro || !cidade || !pontoReferencia) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return false;
+        }
+        const cepRegex = /^\d{5}-\d{3}$/;
+        if (!cepRegex.test(cep)) {
+            alert('CEP inválido');
+            return;
+        }
+        return true;
+    }
+
+    function handleSubmit(event) {
+
+        event.preventDefault();
+
+        if (!validateFields()) {
+            return;
+        }
+
+        alert('Dados enviados com sucesso!');
+
+        setCep('');
+        setCidade('');
+        setRua('');
+        setBairro('');
+        setNumero('');
+        setPontoReferencia('');
+
+    }
 
     return (
-        <form>
+        <form name="endereco" onSubmit={onSubmit}>
             <div className="bottomdiv">
-                <Input label="CEP" inputType="text" inputName="CEP" />
-                <Input label="Rua" inputType="text" inputName="Rua" />
+                <label htmlFor="cep">
+                    CEP:
+                    <input type="text" id="cep" value={cep} onChange={(event) => setCep(event.target.value)} required />
+                </label>
+                <label htmlFor="rua">
+                    Rua:
+                    <input type="text" id="rua" value={rua} onChange={(event) => setRua(event.target.value)} required />
+                </label>
             </div>
             <div className="bottomdiv">
                 <div className="bottomdiv2">
-                    <Input label="Número" inputType="text" inputName="Numero" />
-                    <Input label="Bairro" inputType="text" inputName="Bairro" />
+                    <label htmlFor="numero">Número:
+                        <input type="text" id="numero" value={numero} onChange={(event) => setNumero(event.target.value)} required />
+                    </label>
+                    <label htmlFor="bairro">Bairro:
+                        <input type="text" id="bairro" value={bairro} onChange={(event) => setBairro(event.target.value)} required />
+                    </label>
                 </div>
-                <Input label="Cidade" inputType="text" inputName="Cidade" />
+                <label htmlFor="cidade">Cidade:
+                    <input type="text" id="cidade" value={cidade} onChange={(event) => setCidade(event.target.value)} required />
+                </label>
             </div>
-            <Input label="Ponto de Referência" inputType="text" inputName="Ponto de referencia" />
+            <label htmlFor="pontoReferencia">Ponto de Referência:
+                <input type="text" id="pontoReferencia" value={pontoReferencia} onChange={(event) => setPontoReferencia(event.target.value)} />
+            </label>
             <div className="buttons">
-                <Input className="button_voltar" inputType="button" value="Voltar" />
-                <Input inputType="button" value="Próximo Passo" />
+                <button className="button_voltar" type="button" onClick={() => setEndereco({})}>Voltar</button>
+                <button type="submit">Próximo Passo</button>
             </div>
         </form>
     )
