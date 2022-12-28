@@ -1,0 +1,61 @@
+.userInfo_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .userInfo_item {
+        display: flex;
+        flex-direction: column;
+        margin-left: 69px;
+        margin-bottom: 8px;
+    }
+
+    .line {
+        border-bottom: 1px solid;
+        border-color: #F0F2F6;
+
+        margin-left: 63px;
+        margin-right: 40px;
+    }
+
+    .rowRuaNumero {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        padding-right: 96px;
+    }
+
+    h1 {
+        margin-left: 140px;
+        margin-right: 129px;
+        margin-bottom: 18px;
+    }
+
+    p {
+        font-style: normal;
+        font-size: 16px;
+        font-weight: 500;
+
+        color: #8C98A9;
+
+        margin-bottom: 7px;
+
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 36px;
+
+        margin: 0px
+    }
+
+    .button_userInfo {
+        margin-top: 130px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 455px !important;
+        height: 54px;
+    }
+}

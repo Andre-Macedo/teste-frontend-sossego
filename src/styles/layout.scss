@@ -3,14 +3,9 @@
 .container {
     box-sizing: border-box;
 
-    position: absolute;
-    width: 1017px;
-    height: 741px;
-    left: 211px;
-    top: 141px;
-
-
     background: #FFFFFF;
+
+    padding-bottom: 26px;
 
     /* gray.100 */
     border: 2px solid #F0F2F6;
@@ -41,7 +36,7 @@ form {
     line-height: 24px;
 
     margin-right: 23px;
-    margin-top: 46px;
+    margin-top: 26px;
     margin-left: 60px;
 }
 
