@@ -34,7 +34,9 @@ const UserInfo = (props) => {
             </div>
 
             <button className="button_userInfo" type="submit" onClick={() => {
-                props.cleanForm();
+                props.cleanForm.setEndereco({});
+                props.cleanForm.setIdentificacao({});
+                props.cleanForm.setAbout("");
                 props.setCurrentPage(1)
             }}>Novo Usuário</button>
 

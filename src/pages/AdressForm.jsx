@@ -18,7 +18,7 @@ function AddressForm({ onSubmit, cleanForm, setCurrentPage }) {
     return (
         <>
             <h1>Criação de Usuário</h1>
-            <NavBar />
+            <NavBar imgId="verde" imgEndereco="roxo" />
 
             <form name="endereco" onSubmit={onSubmit}>
                 <div className="bottomdiv">

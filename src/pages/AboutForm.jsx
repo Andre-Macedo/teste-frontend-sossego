@@ -13,7 +13,7 @@ function AboutForm({ onSubmit, cleanForm, setCurrentPage }) {
     return (
         <>
             <h1>Criação de Usuário</h1>
-            <NavBar />
+            <NavBar imgId="verde" imgEndereco="verde" imgAbout="roxo" />
             <form className="aboutForm" name="about" onSubmit={(e) => onSubmit(e, e.target.about.value)}>
                 <label htmlFor="aboutTextBox">Nos conte mais sobre você</label>
                 <textarea id="aboutTextBox" name="about" width="874px" rows="13"
@@ -21,7 +21,6 @@ function AboutForm({ onSubmit, cleanForm, setCurrentPage }) {
                     onChange={(event) => setSobre(event.target.value)}
                     required
                 />
-                {/* {console.log(sobre)} */}
                 <div className="buttons">
                     <button className="button_voltar" type="button" onClick={() => {
                         setCurrentPage(2)
