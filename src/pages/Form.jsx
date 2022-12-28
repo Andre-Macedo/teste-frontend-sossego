@@ -51,116 +51,51 @@ function Form() {
         }
     };
 
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    const senhaRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-    const cepRegex = /^[0-9]{8}$/;
-
     const validateForm = (form) => {
         let isValid = true;
 
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        const senhaRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        const cepRegex = /^[0-9]{8}$/;
+
+        const validateField = (field, fieldName, fieldRegex) => {
+            if (!field.value) {
+                field.setCustomValidity(`Por favor preencha o campo ${fieldName}`);
+                isValid = false;
+            } else if (fieldRegex && !fieldRegex.test(field.value)) {
+                field.setCustomValidity(`Por favor insira um ${fieldName} válido`);
+                isValid = false;
+            } else {
+                field.setCustomValidity('');
+            }
+        };
 
         if (form.name === 'identificacao') {
+            validateField(form.nome, 'nome');
+            validateField(form.email, 'email', emailRegex);
+            validateField(form.senha, 'senha', senhaRegex);
 
-            if (!form.nome.value) {
-                form.nome.setCustomValidity('Por favor preencha o nome');
-                isValid = false;
-            } else {
-                form.nome.setCustomValidity('');
-            }
+            validateField(
+                form.confirmacaoSenha,
+                'confirmação de senha',
+                form.senha.value !== form.confirmacaoSenha.value ? null : undefined
+            );
 
-
-            if (!form.email.value) {
-                form.email.setCustomValidity('Por favor preencha o email');
-                isValid = false;
-            } else if (!emailRegex.test(form.email.value)) {
-                form.email.setCustomValidity('Por favor insira um email válido');
-                isValid = false;
-            } else {
-                form.email.setCustomValidity('');
-            }
-
-
-            if (!form.senha.value) {
-                form.senha.setCustomValidity('Por favor preencha a senha');
-                isValid = false;
-            } else if (!senhaRegex.test(form.senha.value)) {
-                form.senha.setCustomValidity('A senha deve ter pelo menos 8 caracteres, 1 maiúscula, 1 número e 1 símbolo');
-                isValid = false;
-            } else {
-                form.senha.setCustomValidity('');
-            }
-
-
-
-
-            if (!form.confirmacaoSenha.value) {
-                form.confirmacaoSenha.setCustomValidity(
-                    'Por favor preencha a confirmação da senha'
-                );
-                isValid = false;
-            } else if (form.senha.value !== form.confirmacaoSenha.value) {
-                form.confirmacaoSenha.setCustomValidity(
-                    'As senhas não coincidem'
-                );
-                isValid = false;
-            } else {
-                form.confirmacaoSenha.setCustomValidity('');
-            }
-
-
-            if (!form.dataNascimento.value) {
-                form.dataNascimento.setCustomValidity('Por favor preencha a data de nascimento');
-                isValid = false;
-            } else {
-                form.dataNascimento.setCustomValidity('');
-            }
-
-
+            validateField(form.dataNascimento, 'data de nascimento');
         } else if (form.name === 'endereco') {
+            validateField(form.cep, 'CEP', cepRegex);
 
-            if (!form.cep.value || !cepRegex.test(form.cep.value)) {
-                form.cep.setCustomValidity('Por favor insira um CEP válido');
-                isValid = false;
-            } else {
-                form.cep.setCustomValidity('');
-            }
+            validateField(form.bairro, 'bairro');
+            validateField(form.rua, 'rua');
+            validateField(form.cidade, 'cidade');
+            validateField(form.numero, 'número');
+            validateField(form.pontoReferencia, 'ponto referência')
+        } else if (form.name === 'about') {
+            validateField(form.about, 'sobre');;
+        }
 
-            if (!form.bairro.value) {
-                form.bairro.setCustomValidity('Por favor preencha o bairro');
-                isValid = false;
-            } else {
-                form.bairro.setCustomValidity('');
-            }
-            if (!form.rua.value) {
-                form.rua.setCustomValidity('Por favor preencha a rua');
-                isValid = false;
-            } else {
-                form.rua.setCustomValidity('');
-            }
-            if (!form.cidade.value) {
-                form.cidade.setCustomValidity('Por favor preencha a cidade');
-                isValid = false;
-            } else {
-                form.cidade.setCustomValidity('');
-            }
-            if (!form.numero.value) {
-                form.numero.setCustomValidity('Por favor preencha o número');
-                isValid = false;
-            } else {
-                form.numero.setCustomValidity('');
-            }
-        }
-        else {
-            if (!form.about.value) {
-                form.about.setCustomValidity('Por favor escreva sobre si mesmo');
-                isValid = false;
-            } else {
-                form.about.setCustomValidity('');
-            }
-        }
         return isValid;
-    }
-
+    };
 
     let formToRender;
 
