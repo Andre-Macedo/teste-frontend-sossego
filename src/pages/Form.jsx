@@ -89,16 +89,15 @@ function Form() {
             validateField(form.rua, 'rua');
             validateField(form.cidade, 'cidade');
             validateField(form.numero, 'número');
-            validateField(form.pontoReferencia, 'ponto referência')
+            validateField(form.pontoReferencia, 'ponto referência');
         } else if (form.name === 'about') {
-            validateField(form.about, 'sobre');;
+            validateField(form.about, 'sobre');
         }
 
         return isValid;
     };
 
     let formToRender;
-
 
     switch (currentPage) {
         case 1:
