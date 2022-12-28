@@ -13,6 +13,12 @@ function Form() {
     const [endereco, setEndereco] = useState({});
     const [about, setAbout] = useState("");
 
+    const cleanForm = {
+        setIdentificacao: () => setIdentifacacao({}),
+        setEndereco: () => setEndereco({}),
+        setAbout: () => setAbout(""),
+    }
+
 
     const handleSubmit = (e, sobre) => {
         e.preventDefault();
@@ -47,9 +53,12 @@ function Form() {
 
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     const senhaRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    const cepRegex = /^[0-9]{8}$/;
 
     const validateForm = (form) => {
         let isValid = true;
+
+
         if (form.name === 'identificacao') {
 
             if (!form.nome.value) {
@@ -108,20 +117,13 @@ function Form() {
 
 
         } else if (form.name === 'endereco') {
-            if (!form.cep.value) {
-                form.cep.setCustomValidity('Por favor preencha o CEP');
+
+            if (!form.cep.value || !cepRegex.test(form.cep.value)) {
+                form.cep.setCustomValidity('Por favor insira um CEP válido');
                 isValid = false;
             } else {
                 form.cep.setCustomValidity('');
             }
-
-            // const cepRegex = /^\d{8}$/;
-            // if (!cepRegex.test(form.cep.value)) {
-            //     form.cep.setCustomValidity('CEP inválido');
-            //     isValid = false;
-            // } else {
-            //     form.cep.setCustomValidity('');
-            // }
 
             if (!form.bairro.value) {
                 form.bairro.setCustomValidity('Por favor preencha o bairro');
@@ -147,7 +149,8 @@ function Form() {
             } else {
                 form.numero.setCustomValidity('');
             }
-        } else {
+        }
+        else {
             if (!form.about.value) {
                 form.about.setCustomValidity('Por favor escreva sobre si mesmo');
                 isValid = false;
@@ -167,10 +170,10 @@ function Form() {
             formToRender = <UserForm onSubmit={handleSubmit} setCurrentPage={setCurrentPage} />;
             break
         case 2:
-            formToRender = <AdressForm onSubmit={handleSubmit} setCurrentPage={setCurrentPage} />;
+            formToRender = <AdressForm onSubmit={handleSubmit} cleanForm={cleanForm} setCurrentPage={setCurrentPage} />;
             break
         case 3:
-            formToRender = <AboutForm onSubmit={handleSubmit} setCurrentPage={setCurrentPage} setAbout={setAbout} />;
+            formToRender = <AboutForm onSubmit={handleSubmit} cleanForm={cleanForm} setCurrentPage={setCurrentPage} />;
             break
         case 4:
             formToRender = <UserInfo
@@ -180,9 +183,7 @@ function Form() {
                 numero={endereco.numero}
                 cep={endereco.cep}
 
-                setIdentifacacao={setIdentifacacao}
-                setEndereco={setEndereco}
-                setAbout={setAbout}
+                cleanForm={cleanForm}
                 setCurrentPage={setCurrentPage}
             />
             break

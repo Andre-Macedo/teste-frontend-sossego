@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/userinfo.scss"
 
 const UserInfo = (props) => {
+    const { cep } = props;
+    const formattedCep = `${cep.substring(0, 5)}-${cep.substring(5, 8)}`;
     return (
         <div className="userInfo_container">
             <h1> Usuário Criado!</h1>
@@ -28,13 +30,11 @@ const UserInfo = (props) => {
             </div>
             <div className="userInfo_item">
                 <p>CEP: </p>
-                <h3>{props.cep}</h3>
+                <h3>{formattedCep}</h3>
             </div>
 
             <button className="button_userInfo" type="submit" onClick={() => {
-                props.setIdentifacacao({});
-                props.setEndereco({});
-                props.setAbout("");
+                props.cleanForm();
                 props.setCurrentPage(1)
             }}>Novo Usuário</button>
 

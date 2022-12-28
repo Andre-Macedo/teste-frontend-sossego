@@ -6,7 +6,7 @@ import "../styles/aboutform.scss"
 
 import { useState } from "react";
 
-function AboutForm({ onSubmit, setAbout, setCurrentPage }) {
+function AboutForm({ onSubmit, cleanForm, setCurrentPage }) {
 
     const [sobre, setSobre] = useState("");
 
@@ -23,7 +23,11 @@ function AboutForm({ onSubmit, setAbout, setCurrentPage }) {
                 />
                 {/* {console.log(sobre)} */}
                 <div className="buttons">
-                    <button className="button_voltar" type="button" onClick={() => setCurrentPage(2)}>Voltar</button>
+                    <button className="button_voltar" type="button" onClick={() => {
+                        setCurrentPage(2)
+                        cleanForm.setAbout("")
+                        cleanForm.setEndereco({})
+                    }}>Voltar</button>
                     <button type="submit">Próximo Passo</button>
                 </div>
             </form>
